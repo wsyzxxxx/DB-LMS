@@ -1,12 +1,14 @@
 function login(){
     var mysql = require('mysql');
-    var connection = mysql.createConnection({
-    host : 'localhost',
-    user : 'root',
-    password : '123456',
-    database : 'library'
+    var wrapper = require('co-mysql');
+    var pool = mysql.createPool({
+        host : 'localhost',
+        user : 'root',
+        password : '123456',
+        database : 'library'
     });
-    return connection;
+    var p = wrapper(pool);
+    return p;
 }
 
 module.exports = login;
