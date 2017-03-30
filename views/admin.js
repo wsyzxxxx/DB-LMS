@@ -10,7 +10,7 @@ $(document).ready(function(){
                 $("p").hide();
                 $("#form").hide();
                 $("#button").hide();
-                s = "<div><button class='b' formaction='/in_book'>图书入库</button></div><div><button class='b' formaction='/add_card'>借书证管理</button></div>";
+                s = "<div class='col-xs-7  well' style='margin-bottom: 2rem;'><button align='left' class='b btn btn-default' formaction='/in_book'>图书入库</button><button align='right' class='b btn btn-default' formaction='/add_card'>借书证管理</button></div>";
                 $("#button").append(s);
                 $("#button").show(200);
             }
