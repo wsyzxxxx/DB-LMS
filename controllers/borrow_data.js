@@ -3,7 +3,7 @@ var borrow_data = async (ctx , next) => {
     var cno = ctx.request.body.cno || "";
     var bno = ctx.request.body.bno || "";
 
-    var sql = 'select bno,type,title,press,year,author,price,total,stock from book natural join borrow where cno = ? order by title limit 50';
+    var sql = 'select * from card where cno = ?';
     var rows = await connection.query(sql , [cno]);
     var map = new Map();
     map['bno'] = [];
@@ -16,17 +16,18 @@ var borrow_data = async (ctx , next) => {
     map['total'] = [];
     map['stock'] = [];
     map["error"] = "";
-    var flag = 0;
-    for (var row of rows){
-        for (var key in row){
-            map[key].push(row[key]);
-            flag = 1;
-        }
-    }
-    if(flag == 0){
+    map["return"] = "";
+    if(rows.length == 0){
         map["error"] = "借书证不存在！";
     }
     else{
+        sql = 'select bno,type,title,press,year,author,price,total,stock from book natural join borrow where cno = ? order by title limit 50';
+        rows = await connection.query(sql , [cno]);
+        for (var row of rows){
+            for (var key in row){
+                map[key].push(row[key]);
+            }
+        }
         sql = 'select stock from book where bno = ?';
         var result = await connection.query(sql , [bno]);
         console.log(`借书证号：${cno}，书号：${bno}`);
@@ -37,7 +38,7 @@ var borrow_data = async (ctx , next) => {
                     await connection.query(sql , [cno,bno]);
                     sql = 'update book set stock = stock - 1 where bno = ?';
                     await connection.query(sql , [bno]);
-                    map["return"] = "";
+                    map["return"] = "借书成功！";
                 }
                 catch(err){
                     console.log(err);
@@ -47,7 +48,7 @@ var borrow_data = async (ctx , next) => {
             else{
                 sql = 'select min(return_date) as return_date from borrow where bno = ?';
                 result = await connection.query(sql , [bno]);
-                map["return"] = result[0]["return_date"];
+                map["return"] = `无库存，最近归还时间为：$(result[0]["return_date"])`;
             }
         }
         catch(err){
@@ -62,5 +63,5 @@ var borrow_data = async (ctx , next) => {
 }
 
 module.exports = {
-    "POST /bo" : borrow_data
+    "POST /borrow/bo" : borrow_data
 };

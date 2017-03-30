@@ -16,7 +16,16 @@ var return_css = async (ctx , next) => {
     await next();
 }
 
+var return_js = async (ctx , next) => {
+    var js_file = fs.readFileSync(path.resolve(__dirname , "..") + '/views/return.js');
+    ctx.response.type = 'text/javascript';
+    ctx.response.status = 200;
+    ctx.response.body = js_file;
+    await next();
+}
+
 module.exports = {
     "GET /return" : return_html,
-    "GET /return.css" : return_css
+    "GET /return.css" : return_css,
+    "GET /return.js" : return_js
 };

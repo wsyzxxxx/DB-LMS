@@ -16,7 +16,16 @@ var admin_css = async (ctx , next) => {
     await next();
 }
 
+var admin_js = async (ctx , next) => {
+    var js_file = fs.readFileSync(path.resolve(__dirname , "..") + '/views/admin.js');
+    ctx.response.type = 'text/javascript';
+    ctx.response.status = 200;
+    ctx.response.body = js_file;
+    await next();
+}
+
 module.exports = {
     "GET /admin" : admin_html,
-    "GET /admin.css" : admin_css
+    "GET /admin.css" : admin_css,
+    "GET /admin.js" : admin_js
 };

@@ -1,10 +1,10 @@
 create table book(
     bno varchar(7),
-    type varchar(10),
-    title varchar(10),
-    press varchar(15),
+    type varchar(40),
+    title varchar(40),
+    press varchar(20),
     year date,
-    author varchar(10),
+    author varchar(20),
     price float,
     total int,
     stock int,
@@ -51,5 +51,5 @@ insert into card value('3150102019','小王','机械学院','学生');
 insert into card value('3150104110','小强','计算机学院','学生');
 insert into card value('3150105321','小宝','建筑学院','学生');
 
-insert into admin value('001','123456','吴朝晖','13817864187');
+insert into admin value('001','123456789','吴朝晖','13817864187');
 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--boot$jquery-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="add_card.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    
+    <link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>借书证管理</title>
+
+    <style>
+        .div_main{
+            font-family: 'Microsoft Yahei','微软雅黑', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="container div_main">
+<nav class="navbar navbar-default" role="navigation" style="background: white;">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="padding: 0 1rem 0 1rem ;"><img src="logo3.jpg" style="height:5rem"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" >
+                <li ><a>浙江大学图书管理系统</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a>欢迎您使用本系统~</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<ul class="nav nav-pills nav-stacked col-xs-2" role="tablist">
+    <li role="presentation"><a href="/query">查询图书</a></li>
+    <li role="presentation"><a href="/borrow">图书借出</a></li>
+    <li role="presentation"><a href="/return">图书归还</a></li>
+    <li role="presentation" class="active"><a href="/admin">管理员登陆</a></li>
+</ul>
+
+<div id="form">
+<form role="form" class="col-xs-7  well" style="margin-bottom: 2rem;" id="data">
+    <div class="row">
+        <div class="form-group col-xs-10 col-xs-offset-1">
+            <label for="">请输入借书证号：</label>
+            <input class="text" placeholder="例如:3150102100" name="cno"></input>(删除借书证只需输入借书证号)
+        </div>
+
+        <div class="form-group col-xs-10 col-xs-offset-1">
+            <label for="exampleInputEmail1">请输入姓名：</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="例如:小明" name="name">
+        </div>
+
+        <div class="form-group col-xs-10 col-xs-offset-1">
+            <label for="exampleInputEmail1">请输入部门：</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="例如:计算机学院" name="department">
+        </div>
+
+        <div class="form-group col-xs-10 col-xs-offset-1">
+            <label for="exampleInputEmail1">请输入类型：</label>
+            <input class="form-control" id="exampleInputEmail1" placeholder="学生或老师" name="type">
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12" align="center">
+            <button type="button" class="btn btn-default" id="a">点击添加！</button>
+            <button type="button" class="btn btn-default" id="b">点击删除！</button>
+        </div>
+    </div>
+</form>
+</form>
+
+<p align="center">
+</p>
+<form id="button">
+    </form>
+
+</body>
+<html>

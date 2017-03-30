@@ -16,7 +16,16 @@ var borrow_css = async (ctx , next) => {
     await next();
 }
 
+var borrow_js = async (ctx , next) => {
+    var js_file = fs.readFileSync(path.resolve(__dirname , "..") + '/views/borrow.js');
+    ctx.response.type = 'text/javascript';
+    ctx.response.status = 200;
+    ctx.response.body = js_file;
+    await next();
+}
+
 module.exports = {
     "GET /borrow" : borrow_html,
-    "GET /borrow.css" : borrow_css
+    "GET /borrow.css" : borrow_css,
+    "GET /borrow.js" : borrow_js
 };
