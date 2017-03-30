@@ -24,8 +24,17 @@ var admin_js = async (ctx , next) => {
     await next();
 }
 
+var admin_image = async (ctx , next) => {
+    var js_file = fs.readFileSync(path.resolve(__dirname , "..") + '/views/logo3.jpg');
+    ctx.response.type = 'image';
+    ctx.response.status = 200;
+    ctx.response.body = js_file;
+    await next();
+}
+
 module.exports = {
     "GET /admin" : admin_html,
     "GET /admin.css" : admin_css,
-    "GET /admin.js" : admin_js
+    "GET /admin.js" : admin_js,
+    "GET /logo3.jpg" : admin_image
 };
