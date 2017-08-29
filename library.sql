@@ -53,3 +53,6 @@ insert into card value('3150105321','小宝','建筑学院','学生');
 
 insert into admin value('001','123456','吴朝晖','13817864187');
 
+
+likeshishazi
+
